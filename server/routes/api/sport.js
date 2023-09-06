@@ -26,7 +26,7 @@ router.get('/sport', async (req, res) => {
 // Update a sport by ID
 router.put('/sport/:id', async (req, res) => {
   try {
-    const sport = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const sport = await Sport.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(sport);
   } catch (error) {
     res.status(400).json({ error: error.message });
