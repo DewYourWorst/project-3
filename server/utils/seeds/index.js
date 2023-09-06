@@ -12,8 +12,8 @@ const ncaafTeams = require('./ncaaf.teams.json')
 const nhlTeams = require('./nhl.teams.json')
 const nflTeams = require('./nfl.teams.json')
 const wnbaTeams = require('./wnba.teams.json')
-// const ncaamTeams = require('./ncaam.teams.json')
-// const ncaawTeams = require('./ncaaw.teams.json')
+const ncaamTeams = require('./ncaam.teams.json')
+const ncaawTeams = require('./ncaaw.teams.json')
 const sports = require('./sports.json');
 
 async function seedDatabase() {
@@ -31,8 +31,8 @@ async function seedDatabase() {
     await Team.insertMany(nhlTeams);
     await Team.insertMany(nflTeams);
     await Team.insertMany(wnbaTeams);
-    // await Team.insertMany(ncaamTeams);
-    // await Team.insertMany(ncaawTeams);
+    await Team.insertMany(ncaamTeams);
+    await Team.insertMany(ncaawTeams);
 
     await Sport.insertMany(sports)
 
