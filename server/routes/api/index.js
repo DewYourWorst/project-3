@@ -3,6 +3,7 @@ const authRoutes = require('./auth.routes');
 const userRoutes = require('./user.routes');
 const sportRoutes = require('./sport.routes');
 const teamRoutes = require('./team.routes')
+
 // const sportRoutes = require('./sport');
 // const teamRoutes = require('./team');
 // const userRoutes = require('./user');

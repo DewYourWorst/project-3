@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../ctx/UserContext"
+import Displaycard from "../components/Displaycard.jsx";
 
 const HomePage = () => {
   const { currUser } = useUserContext()
@@ -15,6 +16,7 @@ const HomePage = () => {
       ) : (
         <p>You are logged in.</p>
       )}
+      < Displaycard/>
     </>
   )
 }
