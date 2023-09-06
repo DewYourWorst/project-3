@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useUserContext } from "../ctx/UserContext"
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const Header = () => {
   const { currUser, logout } = useUserContext()
@@ -14,7 +14,16 @@ const Header = () => {
             {/* Add the activeKey code below and the rest shoud work  */}
             <Nav className="me-auto" activeKey={window.location.pathname}>
               <li><Nav.Link href="/">Home</Nav.Link></li>
-
+              { currUser.status === "found" && (
+                <>
+                  <li><Nav.Link href="/Dashboard">Dashboard</Nav.Link></li>
+                </>
+              )}
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">baseball</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">football</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">basketball</NavDropdown.Item>
+            </NavDropdown>
               { currUser.status === "notfound" && (
                 <>
                   <li><Nav.Link href="/signup">Signup Page</Nav.Link></li>
