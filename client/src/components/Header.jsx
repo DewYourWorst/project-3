@@ -19,11 +19,11 @@ const Header = () => {
                   <li><Nav.Link href="/Dashboard">Dashboard</Nav.Link></li>
                 </>
               )}
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">baseball</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">football</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">basketball</NavDropdown.Item>
-            </NavDropdown>
+              <li><NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/Dashboard">baseball</NavDropdown.Item>
+                <NavDropdown.Item href="/Dashboard">football</NavDropdown.Item>
+                <NavDropdown.Item href="/Dashboard">basketball</NavDropdown.Item>
+            </NavDropdown></li>
               { currUser.status === "notfound" && (
                 <>
                   <li><Nav.Link href="/signup">Signup Page</Nav.Link></li>

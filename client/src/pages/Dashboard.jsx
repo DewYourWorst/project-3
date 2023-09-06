@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../ctx/UserContext"
+import Displaycard from "../components/Displaycard";
 
 const Dashboard = () => {
   const { currUser } = useUserContext()
@@ -10,11 +11,7 @@ const Dashboard = () => {
     <>
       <h1>Dashboard</h1>
 
-      { currUser.status === "notfound" ? (
-        <p>You are not logged in.</p>
-      ) : (
-        <p>You are logged in.</p>
-      )}
+      
     </>
   )
 }
