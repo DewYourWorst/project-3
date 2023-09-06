@@ -1,12 +1,14 @@
-[{"teamName": "Atlanta Dream", "users": [], "sport": []},
-{"teamName": "Chicago Sky", "users": [], "sport": []},
-{"teamName": "Connecticut Sun", "users": [], "sport": []},
-{"teamName": "Dallas Wings", "users": [], "sport": []},
-{"teamName": "Indiana Fever", "users": [], "sport": []},
-{"teamName": "Las Vegas Aces", "users": [], "sport": []},
-{"teamName": "Los Angeles Sparks", "users": [], "sport": []},
-{"teamName": "Minnesota Lynx", "users": [], "sport": []},
-{"teamName": "New York Liberty", "users": [], "sport": []},
-{"teamName": "Phoenix Mercury", "users": [], "sport": []},
-{"teamName": "Seattle Storm", "users": [], "sport": []},
-{"teamName": "Washington Mystics", "users": [], "sport": []}] 
+[
+  {"teamName": "Atlanta Dream", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Chicago Sky", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Connecticut Sun", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Dallas Wings", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Indiana Fever", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Las Vegas Aces", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Los Angeles Sparks", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Minnesota Lynx", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "New York Liberty", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Phoenix Mercury", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Seattle Storm", "users": [], "sport": "64f8d05e55c4894f208a18ba"},
+  {"teamName": "Washington Mystics", "users": [], "sport": "64f8d05e55c4894f208a18ba"}
+]
