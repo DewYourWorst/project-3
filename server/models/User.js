@@ -20,7 +20,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  }, 
+  teams: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Team'
+  }]
 });
 
 userSchema.method("verify", async function(pw){
