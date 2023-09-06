@@ -17,7 +17,7 @@ router.post('/team', async (req, res) => {
 router.get('/team', async (req, res) => {
   try {
     const team = await Team.find();
-    res.json(sport);
+    res.json(team);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

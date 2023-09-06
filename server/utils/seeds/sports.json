@@ -1,0 +1,7 @@
+[{"sportName": "Football", "sportGender": true},
+{"sportName": "Baseball", "sportGender": true},
+{"sportName": "Hockey", "sportGender": true},
+{"sportName": "Men's Basketball", "sportGender": true},
+{"sportName": "Women's Basketball", "sportGender": false },
+{"sportName": "Soccer", "sportGender": true}
+]
