@@ -1,0 +1,182 @@
+[
+  {
+    "fname": "John",
+    "lname": "Doe",
+    "email": "john@example.com",
+    "password": "hashed_password_1"
+  },
+  {
+    "fname": "Jane",
+    "lname": "Smith",
+    "email": "jane@example.com",
+    "password": "hashed_password_2"
+  },
+  {
+    "fname": "Michael",
+    "lname": "Johnson",
+    "email": "michael@example.com",
+    "password": "hashed_password_3"
+  },
+  {
+    "fname": "Emily",
+    "lname": "Brown",
+    "email": "emily@example.com",
+    "password": "hashed_password_4"
+  },
+  {
+    "fname": "William",
+    "lname": "Davis",
+    "email": "william@example.com",
+    "password": "hashed_password_5"
+  },
+  {
+    "fname": "Sarah",
+    "lname": "Wilson",
+    "email": "sarah@example.com",
+    "password": "hashed_password_6"
+  },
+  {
+    "fname": "Robert",
+    "lname": "Anderson",
+    "email": "robert@example.com",
+    "password": "hashed_password_7"
+  },
+  {
+    "fname": "Laura",
+    "lname": "Martinez",
+    "email": "laura@example.com",
+    "password": "hashed_password_8"
+  },
+  {
+    "fname": "Matthew",
+    "lname": "Taylor",
+    "email": "matthew@example.com",
+    "password": "hashed_password_9"
+  },
+  {
+    "fname": "Olivia",
+    "lname": "Jones",
+    "email": "olivia@example.com",
+    "password": "hashed_password_10"
+  },
+  {
+    "fname": "David",
+    "lname": "Garcia",
+    "email": "david@example.com",
+    "password": "hashed_password_11"
+  },
+  {
+    "fname": "Sophia",
+    "lname": "Hernandez",
+    "email": "sophia@example.com",
+    "password": "hashed_password_12"
+  },
+  {
+    "fname": "James",
+    "lname": "Lopez",
+    "email": "james@example.com",
+    "password": "hashed_password_13"
+  },
+  {
+    "fname": "Emma",
+    "lname": "Williams",
+    "email": "emma@example.com",
+    "password": "hashed_password_14"
+  },
+  {
+    "fname": "Daniel",
+    "lname": "Brown",
+    "email": "daniel@example.com",
+    "password": "hashed_password_15"
+  },
+  {
+    "fname": "Mia",
+    "lname": "Lee",
+    "email": "mia@example.com",
+    "password": "hashed_password_16"
+  },
+  {
+    "fname": "Joseph",
+    "lname": "Gonzalez",
+    "email": "joseph@example.com",
+    "password": "hashed_password_17"
+  },
+  {
+    "fname": "Ava",
+    "lname": "Rodriguez",
+    "email": "ava@example.com",
+    "password": "hashed_password_18"
+  },
+  {
+    "fname": "William",
+    "lname": "Davis",
+    "email": "william@example.com",
+    "password": "hashed_password_19"
+  },
+  {
+    "fname": "Charlotte",
+    "lname": "Harris",
+    "email": "charlotte@example.com",
+    "password": "hashed_password_20"
+  },
+  {
+    "fname": "Michael",
+    "lname": "Walker",
+    "email": "michael@example.com",
+    "password": "hashed_password_21"
+  },
+  {
+    "fname": "Sofia",
+    "lname": "Clark",
+    "email": "sofia@example.com",
+    "password": "hashed_password_22"
+  },
+  {
+    "fname": "David",
+    "lname": "Lewis",
+    "email": "david@example.com",
+    "password": "hashed_password_23"
+  },
+  {
+    "fname": "Chloe",
+    "lname": "Young",
+    "email": "chloe@example.com",
+    "password": "hashed_password_24"
+  },
+  {
+    "fname": "James",
+    "lname": "Green",
+    "email": "james@example.com",
+    "password": "hashed_password_25"
+  },
+  {
+    "fname": "Liam",
+    "lname": "Hall",
+    "email": "liam@example.com",
+    "password": "hashed_password_26"
+  },
+  {
+    "fname": "Olivia",
+    "lname": "Miller",
+    "email": "olivia@example.com",
+    "password": "hashed_password_27"
+  },
+  {
+    "fname": "Ethan",
+    "lname": "Harris",
+    "email": "ethan@example.com",
+    "password": "hashed_password_28"
+  },
+  {
+    "fname": "Sophia",
+    "lname": "Adams",
+    "email": "sophia@example.com",
+    "password": "hashed_password_29"
+  },
+  {
+    "fname": "Lucas",
+    "lname": "Cook",
+    "email": "lucas@example.com",
+    "password": "hashed_password_30"
+  }
+]
