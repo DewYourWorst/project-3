@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../ctx/UserContext"
-import Displaycard from "../components/Displaycard.jsx";
+import GameResult from "../components/GameResult.jsx";
 
 const HomePage = () => {
   const { currUser } = useUserContext()
@@ -16,7 +16,7 @@ const HomePage = () => {
       ) : (
         <p>You are logged in.</p>
       )}
-      < Displaycard/>
+      < GameResult home="alibama" away="texas" homescore="14" awayscore="7" homeimg="alibama" awayimg="alibama"/>
     </>
   )
 }

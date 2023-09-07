@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import { useUserContext } from "../ctx/UserContext"
-import Displaycard from "../components/Displaycard";
+import Displaycard from "../components/GameResult";
 
 const Dashboard = () => {
   const { currUser } = useUserContext()
