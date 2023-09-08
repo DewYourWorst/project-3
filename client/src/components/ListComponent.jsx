@@ -14,9 +14,17 @@ function ListComponent({ title, items }) {
       </button>
       {isOpen && (
         <ul className="dropdown-list">
-          {items.map((item, index) => (
+          {items.map((pollData, index) => (
             <li key={index}>
-              <a href={item.link}>{item.text}</a>
+              <h3>{pollData.poll}</h3>
+              {pollData.ranks.map((ranking, rankingIndex) => (
+                <div key={rankingIndex}>
+                  <strong>Rank: {ranking.rank}</strong>
+                  <div>School: {ranking.school}</div>
+                  <div>Conference: {ranking.conference}</div>
+                  <div>First Place Votes: {ranking.firstPlaceVotes}</div>
+                </div>
+              ))}
             </li>
           ))}
         </ul>

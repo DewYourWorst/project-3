@@ -1,39 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ListComponent } from '../components';
-
-const apTop25 = {
-  title: 'AP Top 25 Poll',
-  items: [
-    { text: 'Item 1', link: '#' },
-    { text: 'Google', link: 'https://www.google.com' },
-    { text: 'Item 3', link: '#' },
-    { text: 'Item 4', link: '#' },
-    { text: 'Item 5', link: '#' },
-  ],
-};
-
-const coachesPoll = {
-  title: 'Coaches Poll',
-  items: [
-    { text: 'Item 1', link: '#' },
-    { text: 'Google', link: 'https://www.google.com' },
-    { text: 'Item 3', link: '#' },
-    { text: 'Item 4', link: '#' },
-    { text: 'Item 5', link: '#' },
-  ],
-};
-
+import { fetchCollegeFootballRankings } from '../test';
 
 function Ranking() {
+  const [rankings, setRankings] = useState([]);
+  const [weekNumber, setWeekNumber] = useState(1); 
+  const [year, setYear] = useState(2023); 
+
+  const handleWeekNumberChange = (event) => {
+    setWeekNumber(event.target.value);
+  };
+
+  const handleYearChange = (event) => {
+    setYear(event.target.value);
+  };
+
+  const fetchData = async () => {
+    try {
+      const data = await fetchCollegeFootballRankings(weekNumber, year);
+      setRankings(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(); 
+  }, []);
+
   return (
     <div>
       <h1>Ranking Page</h1>
       <div>
-        <ListComponent title={apTop25.title} items={apTop25.items} />
+        <label>Week Number:</label>
+        <input
+          type="number"
+          id="weekNumber"
+          value={weekNumber}
+          onChange={handleWeekNumberChange}
+        />
       </div>
-       <div>
-        <ListComponent title={coachesPoll.title} items={coachesPoll.items} />
+      <div>
+        <label>Year:</label>
+        <input
+          type="number"
+          id="year"
+          value={year}
+          onChange={handleYearChange}
+        />
       </div>
+      <button onClick={fetchData}>Fetch Data</button>
+      {rankings.map((pollData, index) => (
+        <div key={index}>
+          <h2>{pollData.poll}</h2>
+          <ListComponent title={pollData.poll} items={pollData.ranks} />
+        </div>
+      ))}
     </div>
   );
 }
