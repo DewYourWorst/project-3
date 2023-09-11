@@ -19,7 +19,7 @@ var opts = {
   'team': "Alabama", // Team name as a string 
   'conference': "SEC", // Conference as a string
   'startWeek': 1, // What week you want to start the query from as a number 
-  'category': "rushing" // Category you want to query as a string 
+  // 'category': "rushing" // Category you want to query as a string 
 };
 apiInstance.getPlayerSeasonStats(year, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
