@@ -9,7 +9,7 @@ ApiKeyAuth.apiKey = 'g9Cyukj2ECHLTBzMSVaMAWfJWuC8o1nf3RlNqKpOXHZ8BCz9kJlJUulmPm4
 ApiKeyAuth.apiKeyPrefix = 'Bearer';
 
 var apiInstance = new cfb.TeamsApi();
-let conference = ''
+let conference = 'Sec'
 var opts = { 
   'conference': conference // Get all the teams by conference as a string 
 };
