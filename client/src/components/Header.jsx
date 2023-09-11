@@ -14,6 +14,7 @@ const Header = () => {
             {/* Add the activeKey code below and the rest shoud work  */}
             <Nav className="me-auto" activeKey={window.location.pathname}>
               <li><Nav.Link href="/">Home</Nav.Link></li>
+              <li><Nav.Link href="/ranking">Rankings Page</Nav.Link></li>
               { currUser.status === "found" && (
                 <>
                   <li><Nav.Link href="/Dashboard">Dashboard</Nav.Link></li>
