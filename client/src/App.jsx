@@ -22,7 +22,6 @@ function App() {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/rankings" element={<Ranking />} />
-
             </Routes>
           </div>
         </Wrapper>
