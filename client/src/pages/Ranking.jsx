@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Dropdown from '../components/Dropdown'
 
 function Ranking() {
   const [data, setData] = useState(null);
@@ -23,12 +22,28 @@ function Ranking() {
 
   return (
     <div>
-      <button onClick={fetchData}>Fetch Rankings</button>
-      <div>
-        <h2>API response</h2>
-        <pre>{JSON.stringify(data)}</pre>
-        <Dropdown />
-      </div>
+      <h2>National Rankings</h2>
+      {data &&
+        data[0].polls
+          .filter((poll) => poll.poll === 'AP Top 25' || poll.poll === 'Coaches Poll')
+          .map((poll) => (
+            <div key={poll.poll}>
+              <h3>{poll.poll}</h3>
+              <ul>
+                {poll.ranks.map((rank) => (
+                  <li key={rank.school}>
+                    <div>
+                      <p>
+                        <a href={`placeholder`}>
+                          {rank.school}
+                        </a>
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
     </div>
   );
 }

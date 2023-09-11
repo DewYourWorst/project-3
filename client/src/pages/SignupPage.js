@@ -32,7 +32,7 @@ const SignupPage = (props) => {
 
   return (
     <div style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}>
-      <h1>Signup Page</h1>
+      <h1>Register</h1>
 
       <form className="form mb-3">
 
