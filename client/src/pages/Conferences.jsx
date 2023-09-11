@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Conferences() {
   const [data, setData] = useState(null);
@@ -37,9 +38,7 @@ function Conferences() {
               </div>
               <div>
                 <p>
-                  <a href={`placeholder`} >
-                    {conference.school}
-                  </a>
+                  <Link to={`/placeholder/${conference.school}`}>{conference.school}</Link>
                 </p>
               </div>
             </li>

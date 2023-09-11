@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import {Link} from 'react-router-dom'
 function Ranking() {
   const [data, setData] = useState(null);
 
@@ -34,9 +34,7 @@ function Ranking() {
                   <li key={rank.school}>
                     <div>
                       <p>
-                        <a href={`placeholder`}>
-                          {rank.school}
-                        </a>
+                        <Link to={`/placeholder/${rank.school}`}>{rank.school}</Link>
                       </p>
                     </div>
                   </li>
