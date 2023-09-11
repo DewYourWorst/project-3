@@ -1,3 +1,6 @@
+const router = require ('express').Router();
+router.get('/', (req, res) => {
+
 var cfb = require('cfb.js');
 var defaultClient = cfb.ApiClient.instance;
 
@@ -9,10 +12,15 @@ ApiKeyAuth.apiKeyPrefix = 'Bearer';
 
 var apiInstance = new cfb.GamesApi();
 
-var gameId = 401520149; // Game id as a number 
+
+
+let gameId = 401520149; // Game id as a number 
 
 apiInstance.getAdvancedBoxScore(gameId).then(function(data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+  res.json(data)
 }, function(error) {
   console.error(error);
 });
+})
+module.exports = router ;
