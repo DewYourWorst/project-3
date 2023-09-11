@@ -24,6 +24,7 @@ const Header = () => {
               { currUser.status === "notfound" && (
                 <>
                   <li><Nav.Link href="/signup">Sign Up</Nav.Link></li>
+                  <li><Nav.Link href="/login">Log in</Nav.Link></li>
                 </>
               )}
             </Nav>
