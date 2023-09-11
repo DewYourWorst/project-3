@@ -1,6 +1,8 @@
 const router = require('express').Router();
-const testRoute = require('../../../client/src/test');
+const rankings = require ('./nationalRankings')
+const conference = require ('./getTeamsByConference')
 
-router.use('/test', testRoute)
+router.use('/rankings', rankings)
+// router.use ('/conferences', conference)
 
 module.exports = router;
