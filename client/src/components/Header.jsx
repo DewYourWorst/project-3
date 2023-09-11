@@ -15,16 +15,12 @@ const Header = () => {
             <Nav className="me-auto" activeKey={window.location.pathname}>
               <li><Nav.Link href="/">Home</Nav.Link></li>
               <li><Nav.Link href="/rankings">Rankings</Nav.Link></li>
+
               { currUser.status === "found" && (
                 <>
                   <li><Nav.Link href="/Dashboard">Dashboard</Nav.Link></li>
                 </>
               )}
-              <li><NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/Dashboard">baseball</NavDropdown.Item>
-                <NavDropdown.Item href="/Dashboard">football</NavDropdown.Item>
-                <NavDropdown.Item href="/Dashboard">basketball</NavDropdown.Item>
-            </NavDropdown></li>
               { currUser.status === "notfound" && (
                 <>
                   <li><Nav.Link href="/signup">Signup Page</Nav.Link></li>
