@@ -1,3 +1,7 @@
+const router = require('express').Router();
+
+router.get('/', (req, res) => {
+
 var cfb = require('cfb.js');
 var defaultClient = cfb.ApiClient.instance;
 
@@ -12,12 +16,17 @@ var apiInstance = new cfb.GamesApi();
 var year = 2023; // Number | Year/season filter for games
 
 var opts = { 
-  'week': 1, // Week number as a number
+  // 'week': 2, // Week number as a number
   'team': "Alabama", // Team name as a string
 
 };
 apiInstance.getGames(year, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+  res.json(data)
 }, function(error) {
   console.error(error);
 });
+
+})
+
+module.exports = router;

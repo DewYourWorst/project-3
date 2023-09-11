@@ -1,3 +1,7 @@
+const router = require('express').Router();
+
+router.get('/', (req, res) => {
+
 var cfb = require('cfb.js');
 var defaultClient = cfb.ApiClient.instance;
 
@@ -19,6 +23,10 @@ var opts = {
 };
 apiInstance.getPlayerSeasonStats(year, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+  res.json(data)
 }, function(error) {
   console.error(error);
 });
+})
+
+module.exports = router;
