@@ -1,79 +1,77 @@
 import { useState } from "react"
 
 const LoginPage = () => {
-  const defForm = { email: "", password: "" }
-  const [ formData, setFormData ] = useState(defForm)
-  const [ loginResult, setLoginResult ] = useState("")
+  const defForm = { email: "", password: "" };
+  const [formData, setFormData] = useState(defForm);
+  const [loginResult, setLoginResult] = useState("");
 
   const handleInputChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const query = await fetch("/api/auth/login", {
       method: "post",
       body: JSON.stringify(formData),
       headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const result = await query.json()
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await query.json();
 
-    if( result && result.payload ){
-      window.location.href = "/"
+    if (result && result.payload) {
+      window.location.href = "/";
     } else {
-      setLoginResult("fail")
+      setLoginResult("fail");
     }
-  }
+  };
 
   return (
-    <div style={{ width: "50%", marginLeft: "auto", marginRight: "auto" }}>
-      <h1>Login Page</h1>
+    <div className="w-1/2 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
+      <h1 className="text-3xl font-semibold mb-6 text-center">Login</h1>
 
-      <form className="form mb-3">
-        <div className="form-group mb-3">
-          <label>Email Address</label>
-          <input   
+      <form className="space-y-4">
+        <div className="mb-4 flex flex-col">
+          <label className="text-gray-400">Email Address:</label>
+          <input
             type="text"
             name="email"
             placeholder="john@gmail.com"
-            className="form-control"
+            className="w-full py-2 px-3 bg-gray-700 border rounded-lg text-gray-200 focus:outline-none focus:ring focus:border-blue-500"
             value={formData.email}
             onChange={handleInputChange}
           />
         </div>
 
-        <div className="form-group mb-3">
-          <label>Password</label>
-          <input   
+        <div className="mb-4 flex flex-col">
+          <label className="text-gray-400">Password:</label>
+          <input
             type="password"
             name="password"
-            className="form-control"
+            className="w-full py-2 px-3 bg-gray-700 border rounded-lg text-gray-200 focus:outline-none focus:ring focus:border-blue-500"
             value={formData.password}
             onChange={handleInputChange}
           />
         </div>
 
-        <div className="form-group mb-3 mt-2">
-          <button className="btn btn-primary" onClick={handleFormSubmit}>Log Me In!</button>
+        <div className="flex justify-center">
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300"
+            onClick={handleFormSubmit}
+          >
+            Log Me In!
+          </button>
         </div>
       </form>
 
-      { loginResult === "success" && (
-        <div className="alert alert-success" role="alert">
-          Login successful!
-        </div>
-      )}
-
-      { loginResult === "fail" && (
-        <div className="alert alert-danger" role="alert">
+      {loginResult === "fail" && (
+        <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-4">
           Login failed!
         </div>
       )}
     </div>
-  )
+  );
+};
 
-}
-
-export default LoginPage
+export default LoginPage;
