@@ -22,7 +22,7 @@ function App() {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/rankings" element={<Ranking />} />
-              <Route path="/conferences" element= {<Conferences />} />
+              <Route path="/conferences/:ConName?" element= {<Conferences />} />
               <Route path="/team" element={<Team />} />
             </Routes>
           </div>

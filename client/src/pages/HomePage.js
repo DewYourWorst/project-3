@@ -16,7 +16,7 @@ const HomePage = () => {
       ) : (
         <p>You are logged in.</p>
       )}
-      < GameResult home="alibama" away="texas" homescore="14" awayscore="7" homeimg="alibama" awayimg="alibama"/>
+      < GameResult/>
     </>
   )
 }

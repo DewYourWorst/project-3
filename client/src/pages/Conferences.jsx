@@ -4,7 +4,15 @@ import { Link, useParams } from 'react-router-dom';
 function Conferences() {
   const [data, setData] = useState(null);
   const { conferenceName } = useParams(); 
+  const { ConName } = useParams();
 
+  useEffect(() => {
+    if(ConName !== undefined){
+      fetchData(ConName);
+    }
+  }, [ConName]);
+
+  
   const fetchData = async (conferenceName) => {
     try {
       const response = await fetch(`/cfb-api/conferences/${conferenceName}`);
@@ -17,10 +25,6 @@ function Conferences() {
       console.error('error fetching data', error.message);
     }
   };
-
-  useEffect(() => {
-    fetchData(conferenceName);
-  }, [conferenceName]);
 
   const tabOptions = [
     'B1G',
