@@ -45,12 +45,12 @@ return (
               </Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item>Points: {team.points}</ListGroup.Item>
-              <ListGroup.Item>Conference: {team.conference}</ListGroup.Item>
+              <ListGroup.Item className="font-bold ">Points: {team.points}</ListGroup.Item>
+              <ListGroup.Item className="font-bold">Conference: {team.conference}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#">View team</Card.Link>
-              <Card.Link href={`/conferences/${team.conference}`}>View conference</Card.Link>
+              <Card.Link href="#" className="underline underline-offset-8">View team</Card.Link>
+              <Card.Link href={`/conferences/${team.conference}`} className="underline underline-offset-8">View conference</Card.Link>
             </Card.Body>
           </Card>
         ))}
