@@ -15,6 +15,8 @@ const Header = () => {
             <Nav className="me-auto" activeKey={window.location.pathname}>
               <li><Nav.Link href="/">Home</Nav.Link></li>
               <li><Nav.Link href="/rankings">Rankings</Nav.Link></li>
+              <li><Nav.Link href="/conferences">Conferences</Nav.Link></li>
+              <li><Nav.Link href="/team">Team Search</Nav.Link></li>
 
               { currUser.status === "found" && (
                 <>
