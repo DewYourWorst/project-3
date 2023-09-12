@@ -50,7 +50,7 @@ return (
             </ListGroup>
             <Card.Body>
               <Card.Link href="#">View team</Card.Link>
-              <Card.Link href="#">View conference</Card.Link>
+              <Card.Link href={`/conferences/${team.conference}`}>View conference</Card.Link>
             </Card.Body>
           </Card>
         ))}
