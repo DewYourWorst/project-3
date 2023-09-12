@@ -9,13 +9,11 @@ function GameResult(props) {
   
   const fetchData = async () => {
     try {
-      const response = await fetch('/cfb-api/new-box-score');
+      const response = await fetch('/cfb-api/new-box-score/' + props.gameid);
       if (!response.ok) {
         throw new Error(`server status ${response.status}`);
       }
       const responseData = await response.json();
-      console.log(responseData
-        )
         setData(responseData[0]);
       } catch (error) {
         console.error('error fetching data', error.message);

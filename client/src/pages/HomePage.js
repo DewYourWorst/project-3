@@ -16,7 +16,7 @@ const HomePage = () => {
       ) : (
         <p>You are logged in.</p>
       )}
-      < GameResult/>
+      < GameResult gameid = {401282790}/>
     </>
   )
 }
