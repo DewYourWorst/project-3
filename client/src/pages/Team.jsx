@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useUserContext } from "../ctx/UserContext";
 
 function Team() {
   const [gameData, setGameData] = useState(null);
@@ -7,6 +8,9 @@ function Team() {
   const [teamName, setTeamName] = useState('');
   const [year, setYear] = useState(2023);
   const { schoolName } = useParams();
+  const { currUser } = useUserContext();
+  const userId = currUser?.data?._id;
+
 
   useEffect(() => {
     setTeamName(schoolName);
@@ -74,6 +78,49 @@ function Team() {
     setYear(inputValue);
   };
 
+  const handleFavoriteChange = () => {
+    addToFavorites()
+  }
+
+  const addToFavorites = async () => {
+    try {
+      if (!userId) {
+        console.error('User ID is not available.');
+        return;
+      }
+      const userResponse = await fetch(`/api/user/${userId}`);
+      if (!userResponse.ok) {
+        throw new Error(`Server status ${userResponse.status}`);
+      }
+      const userData = await userResponse.json();
+  
+      if (!userData.payload.teams.includes(teamName)) {
+        userData.payload.teams.push(teamName);
+  
+        const requestData = {
+          teams: userData.payload.teams,
+        };
+        const response = await fetch(`/api/user/${userId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestData),
+        });
+  
+        if (!response.ok) {
+          throw new Error(`Server status ${response.status}`);
+        }
+  
+        console.log('User data updated successfully.');
+      } else {
+        console.log(`${teamName} is already in the user's favorites.`);
+      }
+    } catch (error) {
+      console.error('Error updating user data:', error.message);
+    }
+  };
+
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
     return new Date(dateString).toLocaleDateString(undefined, options);
@@ -127,6 +174,12 @@ function Team() {
           className="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300 ml-4"
         >
           Search!
+        </button>
+        <button
+          onClick={handleFavoriteChange}
+          className="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300 ml-4"
+        >
+          Add team to favorites
         </button>
       </div>
       <h2 className="text-xl font-semibold mb-2">{scheduleText}</h2>

@@ -6,7 +6,8 @@ const {
   update,
   updateById,
   remove,
-  addTeamNameToUser
+  addTeamNameToUser, 
+  addTConferenceToUser
 } = require('../../controllers/user.controller');
 
 router.get("/", async (req, res) => {
@@ -72,6 +73,18 @@ router.put('/:userId/teams/:teamName', async (req, res) => {
 
   try {
     const user = await addTeamNameToUser(userId, teamName);
+    return res.status(200).json({ status: 'success', payload: user });
+  } catch (err) {
+    return res.status(400).json({ status: 'error', msg: err.message });
+  }
+});
+
+router.put('/:userId/conferences/:conferenceName', async (req, res) => {
+  const userId = req.params.userId;
+  const conferenceName = req.params.conferenceName;
+
+  try {
+    const user = await addTConferenceToUser (userId, conferenceName);
     return res.status(200).json({ status: 'success', payload: user });
   } catch (err) {
     return res.status(400).json({ status: 'error', msg: err.message });
