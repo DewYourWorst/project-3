@@ -33,7 +33,6 @@ function Team() {
       console.error('Error fetching data', error.message);
     }
   };
-  
 
   const filterStatsData = () => {
     if (!statsData) return [];
@@ -66,13 +65,11 @@ function Team() {
 
   const handleTeamNameChange = (e) => {
     const inputValue = e.target.value;
-    console.log('Team input value', inputValue);
     setTeamName(inputValue);
   };
 
   const handleYearChange = (e) => {
     const inputValue = e.target.value;
-    console.log('Year input value:', inputValue);
     setYear(inputValue);
   };
 
@@ -106,6 +103,7 @@ function Team() {
   const filteredStatsData = filterStatsData();
 
   return (
+
     <div>
       <h1>{title}</h1>
       <label>Team Name: </label>
@@ -134,18 +132,18 @@ function Team() {
                 <strong style={winOrLose(game.awayPoints, game.homePoints).home}>
                   {game.homeTeam}: {game.homePoints}
                 </strong>
+
               </div>
-              <div>
-                <strong>{formatDate(game.startDate)}</strong>
-              </div>
-              <h3>----------------</h3>
+              <hr className="my-2" />
             </li>
           ))}
       </ul>
+
       <h2>{statText}</h2>
       <ul>
+
         {filteredStatsData.map((stats) => (
-          <li key={stats.playerId}>
+          <div key={stats.playerId} className="mb-4">
             <div>
               <strong>{stats.player}</strong>
             </div>
@@ -155,10 +153,10 @@ function Team() {
             <div>
               <strong> </strong>
             </div>
-            <h3>----------------</h3>
-          </li>
+            <hr className="my-2" />
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
