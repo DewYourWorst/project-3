@@ -18,3 +18,12 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 1rem;
 }
+
+/* Add a background color to the entire page */
+body {
+  background-color: #111;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
