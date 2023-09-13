@@ -80,26 +80,26 @@ function Ranking() {
       </button>
 
       {data &&
-        data[0].polls
-          .filter((poll) => poll.poll === 'AP Top 25' || poll.poll === 'Coaches Poll')
-          .map((poll) => (
-            <div key={poll.poll} className="mt-8">
-              <h3 className="text-2xl font-semibold">{poll.poll}</h3>
-              <div className="grid grid-cols-3 gap-4 mt-4">
-                {poll.ranks.map((rank) => (
-                  <div key={rank.school} className="mb-2">
-                    <div>
-                      <p>
-                        <Link to={`/team/${rank.school}`} className="text-blue-500 hover:underline">
-                          {rank.school}
-                        </Link>
-                      </p>
-                    </div>
-                  </div>
-                ))}
+      data[0].polls
+      .filter((poll) => poll.poll === 'AP Top 25' || poll.poll === 'Coaches Poll')
+      .map((poll) => (
+      <div key={poll.poll} className="mt-8">
+        <h3 className="text-2xl font-semibold">{poll.poll}</h3>
+        <div className="grid grid-cols-3 gap-4 mt-4">
+          {poll.ranks.map((rank, index) => (
+            <div key={rank.school} className="mb-2">
+              <div>
+                <p>
+                  <Link to={`/team/${rank.school}`} className="text-blue-500 hover:underline">
+                    {index + 1}. {rank.school}
+                  </Link>
+                </p>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    ))}
     </div>
   );
 }

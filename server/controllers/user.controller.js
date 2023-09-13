@@ -91,6 +91,24 @@ async function addTeamNameToUser(userId, teamName) {
   }
 }
 
+async function addTConferenceToUser(userId, conferenceName) {
+  try {
+    const user = await Model.findById(userId);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    user.teams.push(conferenceName);
+
+    await user.save();
+
+    return user;
+  } catch (err) {
+    if (process.env.NODE_ENV === 'development') console.log(err);
+    throw new Error(err);
+  }
+}
+
 module.exports = {
   find,
   findOne,
@@ -99,5 +117,6 @@ module.exports = {
   update,
   updateById,
   remove,
-  addTeamNameToUser
+  addTeamNameToUser, 
+  addTConferenceToUser
 }
