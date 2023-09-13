@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <>
 
-    <div>
+    <div className="w-2/3 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
 
       { currUser.status === "notfound" ? (
         <p className="text-xs text-blue-400 font-semibold mb-6">You are not logged in.</p>
@@ -19,8 +19,9 @@ const HomePage = () => {
       )}
       <h1 className="text-8xl text-blue-400 font-semibold mb-6 text-center">Foot Book</h1>
       
-    </div>
+    
       < GameResult/>
+    </div>
     </>
   )
 }

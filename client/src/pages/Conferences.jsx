@@ -59,7 +59,7 @@ function Conferences() {
           <button
             key={tab}
             onClick={() => fetchData(tab)} 
-            className={conferenceName === tab ? 'active' : 'class="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300 ml-4"'} 
+            className={conferenceName === tab ? 'active' : 'class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mb-3 rounded-full transition duration-300 ease-in-out transform hover:scale-95 focus:outline-none focus:ring focus:ring-blue-300 ml-4"'} 
           >
             {tab}
           </button>
