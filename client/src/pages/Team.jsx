@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import GameResult from '../components/GameResult';
 
 function Team() {
   const [gameData, setGameData] = useState(null);
@@ -7,6 +8,7 @@ function Team() {
   const [teamName, setTeamName] = useState('');
   const [year, setYear] = useState(2023);
   const { schoolName } = useParams();
+  const [isGameResultVisible, setIsGameResultVisible] = useState(false); // State to manage visibility of GameResult component
 
   useEffect(() => {
     setTeamName(schoolName);
@@ -63,6 +65,20 @@ function Team() {
   const handleFetchDataClick = () => {
     fetchData();
   };
+
+
+  const toggleGameResult = () => {
+    setIsGameResultVisible(!isGameResultVisible); // Toggle visibility
+  };
+
+  // const [gameVisibility, setGameVisibility] = useState({});
+
+  // const toggleGameResult = (gameId) => {
+  //   setGameVisibility((prevState) => ({
+  //     ...prevState,
+  //     [gameId]: !prevState[gameId],
+  //   }));
+  // };
 
   const handleTeamNameChange = (e) => {
     const inputValue = e.target.value;
@@ -128,6 +144,12 @@ function Team() {
         >
           Search!
         </button>
+              <button
+          onClick={toggleGameResult}
+          className="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300 ml-4"
+        >
+          Show game data!
+        </button>
       </div>
       <h2 className="text-xl font-semibold mb-2">{scheduleText}</h2>
       <ul>
@@ -147,6 +169,7 @@ function Team() {
 
               </div>
               <hr className="my-2" />
+        {isGameResultVisible && <GameResult gameid = {game.id}/>}
             </li>
           ))}
       </ul>

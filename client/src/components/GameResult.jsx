@@ -26,7 +26,7 @@ function GameResult(props) {
 
 return (
   <>
-    <Row xs={1} md={2} className="g-4">
+    <Row xs={1} md={2} className="">
       {data &&
         data.teams.map((team, index) => (
           <Card
