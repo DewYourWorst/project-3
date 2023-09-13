@@ -166,8 +166,8 @@ function Team() {
             <hr className="my-2" />
           </div>
         ))}
-        </ul>
       </div>
+    </div>
   );
 }
 
