@@ -1,5 +1,5 @@
 const router = require('express').Router();
-router.get('/', (req, res) => {
+router.get('/:gameID', (req, res) => {
 
 var cfb = require('cfb.js');
 var defaultClient = cfb.ApiClient.instance;
@@ -17,7 +17,7 @@ var opts = {
   'seasonType': "regular", // String | Season type filter (regular or postseason)
   'team': "Alabama", // String | Team filter
   'conference': "SEC", // String | Conference abbreviation filter
-  'gameId': 401520149, // Number | Game id filter
+  'gameId': req.params.gameID, // Number | Game id filter
   'classification': "fbs" // String | Division classification filter (fbs/fcs/ii/iii)
 };
 apiInstance.getTeamGameStats(year, opts).then(function(data) {
