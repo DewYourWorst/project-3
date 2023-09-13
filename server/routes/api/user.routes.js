@@ -5,7 +5,8 @@ const {
   create,
   update,
   updateById,
-  remove 
+  remove,
+  addTeamNameToUser
 } = require('../../controllers/user.controller');
 
 router.get("/", async (req, res) => {
@@ -64,6 +65,18 @@ router.delete("/:id", async (req, res) => {
     return res.status(400).json({ status: "error", msg })
   }
 })
+
+router.put('/:userId/teams/:teamName', async (req, res) => {
+  const userId = req.params.userId;
+  const teamName = req.params.teamName;
+
+  try {
+    const user = await addTeamNameToUser(userId, teamName);
+    return res.status(200).json({ status: 'success', payload: user });
+  } catch (err) {
+    return res.status(400).json({ status: 'error', msg: err.message });
+  }
+});
 
 
 module.exports = router;
