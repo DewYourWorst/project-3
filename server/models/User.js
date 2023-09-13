@@ -24,6 +24,9 @@ const userSchema = new Schema({
   teams: [{
     type: String, 
   }],
+  conferences: [{
+    type: String, 
+  }],
 });
 
 userSchema.method("verify", async function(pw){
