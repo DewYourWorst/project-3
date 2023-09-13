@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useUserContext } from "../ctx/UserContext";
+import GameResult from '../components/GameResult';
 
 function Team() {
   const [gameData, setGameData] = useState(null);
