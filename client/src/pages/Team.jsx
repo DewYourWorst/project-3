@@ -1,27 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function Team() {
   const [gameData, setGameData] = useState(null);
   const [statsData, setStatsData] = useState(null);
   const [teamName, setTeamName] = useState('Alabama');
   const [year, setYear] = useState(2023);
+  const { schoolName } = useParams();
 
-  const fetchData = async () => {
+  useEffect(() => {
+    console.log("schoolName:", schoolName);
+    console.log("teamName:", teamName);
+    console.log("year:", year);
+    if (schoolName !== undefined) {
+      // Set the teamName based on the param
+      setTeamName(schoolName);
+      // Fetch data when schoolName changes
+      fetchData(teamName, year);
+    }
+  }, [schoolName, year, teamName]); // Include year as a dependency here
+
+  const fetchData = async (teamName, year) => {
     try {
       setStatsData(null);
-  
+
       const gameResponse = await fetch(`/cfb-api/games?year=${year}&teamName=${teamName}`);
       if (!gameResponse.ok) {
         throw new Error(`Server status ${gameResponse.status}`);
       }
       const gameData = await gameResponse.json();
-  
+
       const statsResponse = await fetch(`/cfb-api/stats?year=${year}&teamName=${teamName}`);
       if (!statsResponse.ok) {
         throw new Error(`Server status ${statsResponse.status}`);
       }
       const statsData = await statsResponse.json();
-  
+
       setGameData(gameData);
       setStatsData(statsData);
     } catch (error) {
@@ -77,8 +91,26 @@ function Team() {
   };
 
   const title = gameData
-    ? `${teamName}'s ${gameData[0].season} ${gameData[0].seasonType} season games`
-    : 'Search for a team';
+    ? `${teamName}'s ${gameData[0].season} ${gameData[0].seasonType} season games` : 'Search for a team';
+
+  const scheduleText = gameData ? `${teamName}'s ${year} Schedule` : '';
+  const statText = gameData ? `${teamName}'s Stat Leaders` : '';
+
+  const winOrLose = (awayPoints, homePoints) => {
+    const styles = {
+      away: {},
+      home: {},
+    };
+    if (awayPoints > homePoints) {
+      styles.away.color = 'green';
+      styles.home.color = 'red';
+    } else if (awayPoints < homePoints) {
+      styles.away.color = 'red';
+      styles.home.color = 'green';
+    }
+
+    return styles;
+  };
 
   const filteredStatsData = filterStatsData();
 
@@ -98,20 +130,19 @@ function Team() {
         onChange={handleYearChange}
       />
       <button onClick={handleFetchDataClick}>Search!</button>
-      <h2>{teamName}'s {year} Schedule</h2>
+      <h2>{scheduleText}</h2>
       <ul>
         {gameData &&
           gameData.map((game) => (
             <li key={game.id}>
               <div>
-                <div>
-                  <strong>{game.homeTeam}: {game.homePoints} </strong>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <strong>{game.awayTeam}: {game.awayPoints}</strong>
-                </div>
+                <strong style={winOrLose(game.awayPoints, game.homePoints).away}>
+                  {game.awayTeam}: {game.awayPoints}
+                </strong>
+                {' at '}
+                <strong style={winOrLose(game.awayPoints, game.homePoints).home}>
+                  {game.homeTeam}: {game.homePoints}
+                </strong>
               </div>
               <div>
                 <strong>{formatDate(game.startDate)}</strong>
@@ -120,7 +151,7 @@ function Team() {
             </li>
           ))}
       </ul>
-      <h2>{teamName}'s Stat Leaders</h2>
+      <h2>{statText}</h2>
       <ul>
         {filteredStatsData.map((stats) => (
           <li key={stats.playerId}>
