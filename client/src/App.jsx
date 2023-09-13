@@ -23,7 +23,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/rankings" element={<Ranking />} />
               <Route path="/conferences/:ConName?" element= {<Conferences />} />
-              <Route path="/team" element={<Team />} />
+              <Route path="/team/:schoolName?" element={<Team />} />
             </Routes>
           </div>
         </Wrapper>

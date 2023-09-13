@@ -3,16 +3,15 @@ import { Link, useParams } from 'react-router-dom';
 
 function Conferences() {
   const [data, setData] = useState(null);
-  const { conferenceName } = useParams(); 
+  const { conferenceName } = useParams();
   const { ConName } = useParams();
 
   useEffect(() => {
-    if(ConName !== undefined){
+    if (ConName !== undefined) {
       fetchData(ConName);
     }
   }, [ConName]);
 
-  
   const fetchData = async (conferenceName) => {
     try {
       const response = await fetch(`/cfb-api/conferences/${conferenceName}`);
@@ -26,24 +25,37 @@ function Conferences() {
     }
   };
 
-  const tabOptions = [
-    'B1G',
-    'SEC',
-    'ACC',
-    'B12',
-    'PAC',
-    'CUSA',
-    'MAC',
-    'MWC',
-    'Ind',
-  ];
+  const tabOptions = ['B1G', 'SEC', 'ACC', 'B12', 'PAC', 'CUSA', 'MAC', 'MWC', 'Ind'];
+
+  const conferenceListStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', 
+    gap: '20px', 
+  };
+
+  const conferenceItemStyle = {
+    border: '10px solid', 
+    borderColor: 'transparent', 
+    textAlign: 'center',
+    backgroundColor: '#E5E4E2',
+    display: 'flex', 
+    flexDirection: 'column', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    padding: '10px',
+  };
+
+  const imageStyle = {
+    width: '50px',
+    height: '50px',
+  };
 
   return (
     <div className="w-2/3 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
       <h2 className=" text-3xl font-semibold mb-6 text-center">Conferences</h2>
 
       <div>
-        {tabOptions.map(tab => (
+        {tabOptions.map((tab) => (
           <button
             key={tab}
             onClick={() => fetchData(tab)} 
@@ -54,26 +66,31 @@ function Conferences() {
         ))}
       </div>
 
-      <ul class="grid grid-flow-row-dense grid-cols-2 grid-rows-2 gap-4 box-border h-100 w-100 p-4 border-4">
+      <div style={conferenceListStyle} class="grid grid-flow-row-dense grid-cols-2 grid-rows-2 gap-4 box-border h-100 w-100 p-4 border-4">
         {data &&
           data.map((conference) => (
-            <li key={conference.id} style={{ backgroundColor: conference.color }}>
+            <div
+              key={conference.id}
+              style={{
+                ...conferenceItemStyle,
+                borderColor: conference.color, 
+              }}
+            >
               <div>
                 <img
                   src={conference.logos[0]}
                   alt={conference.school}
-                  width={50}
-                  height={50}
+                  style={imageStyle} 
                 />
               </div>
               <div>
-                <p>
-                  <Link to={`/placeholder/${conference.school}`}>{conference.school}</Link>
-                </p>
+                <span style={{ color: conference.color }}>
+                  <Link to={`/team/${conference.school}`}>{conference.school}</Link>
+                </span>
               </div>
-            </li>
+            </div>
           ))}
-      </ul>
+      </div>
     </div>
   );
 }
