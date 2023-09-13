@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 function Team() {
   const [gameData, setGameData] = useState(null);
   const [statsData, setStatsData] = useState(null);
-  const [teamName, setTeamName] = useState('Alabama');
+  const [teamName, setTeamName] = useState('');
   const [year, setYear] = useState(2023);
   const { schoolName } = useParams();
 
   useEffect(() => {
-  })
+    setTeamName(schoolName);
+  }, [schoolName]);
 
   const fetchData = async () => {
     try {
@@ -79,7 +80,8 @@ function Team() {
   };
 
   const title = gameData
-    ? `${teamName}'s ${gameData[0].season} ${gameData[0].seasonType} season games` : 'Search for a team';
+    ? `${teamName}'s ${gameData[0].season} ${gameData[0].seasonType} season games`
+    : 'Search for a team';
 
   const scheduleText = gameData ? `${teamName}'s ${year} Schedule` : '';
   const statText = gameData ? `${teamName}'s Stat Leaders` : '';
@@ -103,26 +105,35 @@ function Team() {
   const filteredStatsData = filterStatsData();
 
   return (
-
-    <div>
-      <h1>{title}</h1>
-      <label>Team Name: </label>
-      <input
-        type="text"
-        value={teamName}
-        onChange={handleTeamNameChange}
-      />
-      <label>Year:</label>
-      <input
-        type="number"
-        value={year}
-        onChange={handleYearChange}
-      />
-      <button onClick={handleFetchDataClick}>Search!</button>
-      <h2>{scheduleText}</h2>
+    <div className="w-1/2 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
+      <h1 className="text-3xl font-semibold mb-4 text-center">{title}</h1>
+      <div className="flex justify-center mb-4">
+        <label className="text-gray-400">Team Name:</label>
+        <input
+          type="text"
+          value={teamName}
+          onChange={handleTeamNameChange}
+          className="w-40 py-2 px-3 bg-gray-700 border rounded-lg text-gray-200 focus:outline-none focus:ring focus:border-blue-500 ml-2"
+        />
+        <label className="text-gray-400 ml-4">Year:</label>
+        <input
+          type="number"
+          value={year}
+          onChange={handleYearChange}
+          className="w-20 py-2 px-3 bg-gray-700 border rounded-lg text-gray-200 focus:outline-none focus:ring focus:border-blue-500 ml-2"
+        />
+        <button
+          onClick={handleFetchDataClick}
+          className="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300 ml-4"
+        >
+          Search!
+        </button>
+      </div>
+      <h2 className="text-xl font-semibold mb-2">{scheduleText}</h2>
       <ul>
         {gameData &&
           gameData.map((game) => (
+
             <li key={game.id}>
               <div>
                 <strong style={winOrLose(game.awayPoints, game.homePoints).away}>
@@ -132,16 +143,15 @@ function Team() {
                 <strong style={winOrLose(game.awayPoints, game.homePoints).home}>
                   {game.homeTeam}: {game.homePoints}
                 </strong>
+                <p>{formatDate(game.startDate)}</p>
 
               </div>
               <hr className="my-2" />
             </li>
           ))}
       </ul>
-
-      <h2>{statText}</h2>
-      <ul>
-
+      <h2 className="text-xl font-semibold mb-2 mt-4">{statText}</h2>
+      <div className="grid grid-cols-3 gap-4">
         {filteredStatsData.map((stats) => (
           <div key={stats.playerId} className="mb-4">
             <div>
@@ -156,9 +166,8 @@ function Team() {
             <hr className="my-2" />
           </div>
         ))}
-      </ul>
+        </ul>
       </div>
-      
   );
 }
 
