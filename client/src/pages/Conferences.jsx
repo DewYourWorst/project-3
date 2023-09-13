@@ -66,7 +66,7 @@ function Conferences() {
         ))}
       </div>
 
-      <div style={conferenceListStyle} class="grid grid-flow-row-dense grid-cols-2 grid-rows-2 gap-4 box-border h-100 w-100 p-4 border-4">
+      <div style={conferenceListStyle}>
         {data &&
           data.map((conference) => (
             <div
