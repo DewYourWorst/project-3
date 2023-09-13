@@ -51,22 +51,22 @@ function Conferences() {
   };
 
   return (
-    <div>
-      <h2>Conferences</h2>
+    <div className="w-2/3 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
+      <h2 className=" text-3xl font-semibold mb-6 text-center">Conferences</h2>
 
       <div>
         {tabOptions.map((tab) => (
           <button
             key={tab}
-            onClick={() => fetchData(tab)}
-            className={conferenceName === tab ? 'active' : ''}
+            onClick={() => fetchData(tab)} 
+            className={conferenceName === tab ? 'active' : 'class="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300 ml-4"'} 
           >
             {tab}
           </button>
         ))}
       </div>
 
-      <div style={conferenceListStyle}>
+      <div style={conferenceListStyle} class="grid grid-flow-row-dense grid-cols-2 grid-rows-2 gap-4 box-border h-100 w-100 p-4 border-4">
         {data &&
           data.map((conference) => (
             <div
