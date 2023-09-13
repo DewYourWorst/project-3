@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 function Team() {
   const [gameData, setGameData] = useState(null);
   const [statsData, setStatsData] = useState(null);
-  const [teamName, setTeamName] = useState('Alabama');
+  const [teamName, setTeamName] = useState('');
   const [year, setYear] = useState(2023);
   const { schoolName } = useParams();
 
   useEffect(() => {
-  })
+    setTeamName(schoolName);
+  }, [schoolName]);
 
   const fetchData = async () => {
     try {
@@ -132,17 +133,18 @@ function Team() {
       <ul>
         {gameData &&
           gameData.map((game) => (
-            <li key={game.id} className="mb-4">
-              <div className="flex justify-between">
-                <div>
-                  <strong style={winOrLose(game.awayPoints, game.homePoints).away}>
-                    {game.awayTeam}: {game.awayPoints}
-                  </strong>
-                  {' at '}
-                  <strong style={winOrLose(game.awayPoints, game.homePoints).home}>
-                    {game.homeTeam}: {game.homePoints}
-                  </strong>
-                </div>
+
+            <li key={game.id}>
+              <div>
+                <strong style={winOrLose(game.awayPoints, game.homePoints).away}>
+                  {game.awayTeam}: {game.awayPoints}
+                </strong>
+                {' at '}
+                <strong style={winOrLose(game.awayPoints, game.homePoints).home}>
+                  {game.homeTeam}: {game.homePoints}
+                </strong>
+                <p>{formatDate(game.startDate)}</p>
+
               </div>
               <hr className="my-2" />
             </li>
@@ -164,8 +166,8 @@ function Team() {
             <hr className="my-2" />
           </div>
         ))}
+        </ul>
       </div>
-    </div>
   );
 }
 
