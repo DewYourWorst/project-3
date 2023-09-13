@@ -22,9 +22,11 @@ const userSchema = new Schema({
     required: true
   }, 
   teams: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Team'
-  }]
+    type: String, 
+  }],
+  conferences: [{
+    type: String, 
+  }],
 });
 
 userSchema.method("verify", async function(pw){

@@ -73,6 +73,42 @@ async function remove(id){
   }
 }
 
+async function addTeamNameToUser(userId, teamName) {
+  try {
+    const user = await Model.findById(userId);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    user.teams.push(teamName);
+
+    await user.save();
+
+    return user;
+  } catch (err) {
+    if (process.env.NODE_ENV === 'development') console.log(err);
+    throw new Error(err);
+  }
+}
+
+async function addTConferenceToUser(userId, conferenceName) {
+  try {
+    const user = await Model.findById(userId);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    user.teams.push(conferenceName);
+
+    await user.save();
+
+    return user;
+  } catch (err) {
+    if (process.env.NODE_ENV === 'development') console.log(err);
+    throw new Error(err);
+  }
+}
+
 module.exports = {
   find,
   findOne,
@@ -80,5 +116,7 @@ module.exports = {
   create,
   update,
   updateById,
-  remove
+  remove,
+  addTeamNameToUser, 
+  addTConferenceToUser
 }
