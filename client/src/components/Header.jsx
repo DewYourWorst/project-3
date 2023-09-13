@@ -39,7 +39,7 @@ const Header = () => {
                   <span className="nav-link active">Welcome back, {currUser.data.fname}</span>
               </li>
               <li className="nav-item">
-                <a className="nav-link active" onClick={logout}>Logout</a>
+                <button className="nav-link active" onClick={logout}>Logout</button>
               </li>
             </ul>
           )}

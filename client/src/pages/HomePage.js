@@ -9,13 +9,17 @@ const HomePage = () => {
   if( currUser.status === "searching" ) return <></>
   return (
     <>
-      <h1>Home Page</h1>
+
+    <div>
 
       { currUser.status === "notfound" ? (
-        <p>You are not logged in.</p>
+        <p className="text-xs text-blue-400 font-semibold mb-6">You are not logged in.</p>
       ) : (
-        <p>You are logged in.</p>
+        <p className="text-xs text-blue-400 font-semibold mb-6">You are logged in.</p>
       )}
+      <h1 className="text-8xl text-blue-400 font-semibold mb-6 text-center">Foot Book</h1>
+      
+    </div>
       < GameResult/>
     </>
   )
