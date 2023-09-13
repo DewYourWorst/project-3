@@ -10,18 +10,18 @@ const HomePage = () => {
   return (
     <>
 
-    <div className="w-2/3 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
+      <div className="w-2/3 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
 
-      { currUser.status === "notfound" ? (
-        <p className="text-xs text-blue-400 font-semibold mb-6">You are not logged in.</p>
-      ) : (
-        <p className="text-xs text-blue-400 font-semibold mb-6">You are logged in.</p>
-      )}
-      <h1 className="text-8xl text-blue-400 font-semibold mb-6 text-center">Foot Book</h1>
+        { currUser.status === "notfound" ? (
+          <p className="text-xs text-blue-400 font-semibold mb-6">You are not logged in.</p>
+        ) : (
+          <p className="text-xs text-blue-400 font-semibold mb-6">You are logged in.</p>
+        )}
+        <h1 className="text-8xl text-blue-400 font-semibold mb-6 text-center">Foot Book</h1>
+        
       
-    
-      < GameResult/>
-    </div>
+        < GameResult/>
+      </div>
     </>
   )
 }
