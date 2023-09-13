@@ -183,7 +183,7 @@ function Team() {
           type="number"
           value={year}
           onChange={handleYearChange}
-          className="w-20 py-2 px-3 bg-gray-700 border rounded-lg text-gray-200 focus:outline-none focus:ring focus:border-blue-500 ml-2"
+          className="w-24 py-2 px-3 bg-gray-700 border rounded-lg text-gray-200 focus:outline-none focus:ring focus:border-blue-500 ml-2"
         />
         <button
           onClick={handleFetchDataClick}
