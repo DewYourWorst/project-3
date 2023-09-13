@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 function Team() {
   const [gameData, setGameData] = useState(null);
   const [statsData, setStatsData] = useState(null);
-  const [teamName, setTeamName] = useState('Alabama');
+  const [teamName, setTeamName] = useState('');
   const [year, setYear] = useState(2023);
   const { schoolName } = useParams();
 
   useEffect(() => {
-  })
+    setTeamName(schoolName);
+  }, [schoolName]);
 
   const fetchData = async () => {
     try {
@@ -132,7 +133,7 @@ function Team() {
                 <strong style={winOrLose(game.awayPoints, game.homePoints).home}>
                   {game.homeTeam}: {game.homePoints}
                 </strong>
-
+                <p>{formatDate(game.startDate)}</p>
               </div>
               <hr className="my-2" />
             </li>
@@ -156,8 +157,8 @@ function Team() {
             <hr className="my-2" />
           </div>
         ))}
+        </ul>
       </div>
-    </div>
   );
 }
 
