@@ -48,7 +48,7 @@ function Ranking() {
   };
 
   return (
-    <div className="w-1/2 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
+    <div className="w-100% md:w-1/2 mx-auto p-8 bg-gray-800 rounded-lg shadow-lg text-white">
       <h2 className="text-3xl font-semibold mb-4 text-center">National Rankings</h2>
 
       <div className="mb-4">
@@ -87,7 +87,7 @@ function Ranking() {
         <h3 className="text-2xl font-semibold">{poll.poll}</h3>
         <div className="grid grid-cols-3 gap-4 mt-4">
           {poll.ranks.map((rank, index) => (
-            <div key={rank.school} className="mb-2">
+            <div key={rank.school} className="mb-2 text-sm md:text-base">
               <div>
                 <p>
                   <Link to={`/team/${rank.school}`} className="text-blue-500 hover:underline">
