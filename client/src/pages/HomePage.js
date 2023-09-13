@@ -18,10 +18,9 @@ const HomePage = () => {
           <p className="text-xs text-blue-400 font-semibold mb-6">You are logged in.</p>
         )}
         <h1 className="text-8xl text-blue-400 font-semibold mb-6 text-center">Foot Book</h1>
-        
-      
-        < GameResult gameid = {401282790}/>
-      </div>
+   
+    </div>
+
     </>
   )
 }
