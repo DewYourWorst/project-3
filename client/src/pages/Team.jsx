@@ -9,18 +9,9 @@ function Team() {
   const { schoolName } = useParams();
 
   useEffect(() => {
-    console.log("schoolName:", schoolName);
-    console.log("teamName:", teamName);
-    console.log("year:", year);
-    if (schoolName !== undefined) {
-      // Set the teamName based on the param
-      setTeamName(schoolName);
-      // Fetch data when schoolName changes
-      fetchData(teamName, year);
-    }
-  }, [schoolName, year, teamName]); // Include year as a dependency here
+  })
 
-  const fetchData = async (teamName, year) => {
+  const fetchData = async () => {
     try {
       setStatsData(null);
 
