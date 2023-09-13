@@ -7,9 +7,37 @@ function Conferences() {
   const { ConName } = useParams();
 
   useEffect(() => {
-    if (ConName !== undefined) {
-      fetchData(ConName);
+    if(ConName !== undefined){
+      let conAbbr
+      switch (ConName) {
+        case 'Big%20Ten':
+          conAbbr = 'B1G';
+          break;
+        case 'Big%2012':
+          conAbbr = 'B12';
+          break;
+        case 'Pac-12':
+          conAbbr = 'PAC';
+          break;
+        case 'Conference%20USA':
+          conAbbr = 'CUSA';
+          break;
+        case 'Mid-American':
+          conAbbr = 'MAC';
+          break;
+        case 'Mountain%20West':
+          conAbbr = 'MWC';
+          break;
+        case 'FBS%20Independents':
+          conAbbr = 'Ind';
+          break;
+        default: 
+          conAbbr = ConName;
+      }
+      
+      fetchData(conAbbr);
     }
+
   }, [ConName]);
 
   const fetchData = async (conferenceName) => {
