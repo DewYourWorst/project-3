@@ -20,7 +20,7 @@ const HomePage = () => {
         <h1 className="text-8xl text-blue-400 font-semibold mb-6 text-center">Foot Book</h1>
         
       
-        < GameResult/>
+        < GameResult gameid = {401282790}/>
       </div>
     </>
   )

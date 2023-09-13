@@ -9,13 +9,11 @@ function GameResult(props) {
   
   const fetchData = async () => {
     try {
-      const response = await fetch('/cfb-api/new-box-score');
+      const response = await fetch('/cfb-api/new-box-score/' + props.gameid);
       if (!response.ok) {
         throw new Error(`server status ${response.status}`);
       }
       const responseData = await response.json();
-      console.log(responseData
-        )
         setData(responseData[0]);
       } catch (error) {
         console.error('error fetching data', error.message);
@@ -28,7 +26,7 @@ function GameResult(props) {
 
 return (
   <>
-    <Row xs={1} md={2} className="g-4">
+    <Row xs={1} md={2} className="">
       {data &&
         data.teams.map((team, index) => (
           <Card
@@ -40,16 +38,14 @@ return (
             <Card.Img variant="top" src={props.homeimg} />
             <Card.Body>
               <Card.Title>{team.school}</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroup.Item className="font-bold ">Points: {team.points}</ListGroup.Item>
+              <ListGroup.Item className="font-bold ">Touchdowns: {(parseInt(team.stats[0].stat))+(parseInt(team.stats[1].stat))}</ListGroup.Item>
+              <ListGroup.Item className="font-bold ">Kicking Points: {(parseInt(team.stats[5].stat))}</ListGroup.Item>
               <ListGroup.Item className="font-bold">Conference: {team.conference}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Card.Link href="#" className="underline underline-offset-8">View team</Card.Link>
               <Card.Link href={`/conferences/${team.conference}`} className="underline underline-offset-8">View conference</Card.Link>
             </Card.Body>
           </Card>
