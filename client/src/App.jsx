@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Wrapper, } from "./components"
 import { UserProvider } from "./ctx/UserContext";
-import { HomePage, LoginPage, SignupPage, Dashboard, Ranking, Conferences, Team } from "./pages";
+import { HomePage, LoginPage, SignupPage, Dashboard, Ranking, Conferences, Team, PageNotFound } from "./pages";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/global.css'
@@ -24,6 +24,7 @@ function App() {
               <Route path="/rankings" element={<Ranking />} />
               <Route path="/conferences/:ConName?" element= {<Conferences />} />
               <Route path="/team/:schoolName?" element={<Team />} />
+              <Route path="/*" element={<PageNotFound/>}/>
             </Routes>
           </div>
         </Wrapper>

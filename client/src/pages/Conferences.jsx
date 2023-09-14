@@ -13,10 +13,37 @@ function Conferences() {
 
 
   useEffect(() => {
-    if (ConName !== undefined) {
-      fetchData(ConName);
-      setShowAddToConferencesButton(true);
+    if(ConName !== undefined){
+      let conAbbr
+      switch (ConName) {
+        case 'Big%20Ten':
+          conAbbr = 'B1G';
+          break;
+        case 'Big%2012':
+          conAbbr = 'B12';
+          break;
+        case 'Pac-12':
+          conAbbr = 'PAC';
+          break;
+        case 'Conference%20USA':
+          conAbbr = 'CUSA';
+          break;
+        case 'Mid-American':
+          conAbbr = 'MAC';
+          break;
+        case 'Mountain%20West':
+          conAbbr = 'MWC';
+          break;
+        case 'FBS%20Independents':
+          conAbbr = 'Ind';
+          break;
+        default: 
+          conAbbr = ConName;
+      }
+      
+      fetchData(conAbbr);
     }
+
   }, [ConName]);
 
   const fetchData = async (conferenceName) => {
@@ -153,7 +180,7 @@ function Conferences() {
           <button
             key={tab}
             onClick={() => fetchData(tab)} 
-            className={conferenceName === tab ? 'active' : 'class="bg-blue-500 hover:bg-blue-600 text-black font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring focus:ring-blue-300 ml-4"'} 
+            className={conferenceName === tab ? 'active' : 'class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mb-3 rounded-full transition duration-300 ease-in-out transform hover:scale-95 focus:outline-none focus:ring focus:ring-blue-300 ml-4"'} 
           >
             {tab}
           </button>
